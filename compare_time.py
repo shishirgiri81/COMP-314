@@ -6,45 +6,46 @@ import time
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
-A = np.random.rand(100)
 
-x = [100 , 1000, 10000, 100000, 1000000]
-n = len(x)
 
-y_insertionSort = []
-y_selectionSort = []
+def main():
 
-for i in range(0, n):
+    A = np.random.rand(100)
 
-    begin = time.time()
+    x = [100 , 1000, 10000, 100000, 1000000]
+    n = len(x)
 
-    result = insertionSort(A)
+    y_insertionSort = []
+    y_selectionSort = []
 
-    end = time.time()
+    for i in range(0, n):
 
-    time_taken = end - begin
+        begin = time.time()
 
-    y_insertionSort[i] = time_taken
+        result = insertionSort(A)
 
-for i in range(0, n):
+        end = time.time()
 
-    begin = time.time()
+        y_insertionSort[i] = end - begin
 
-    result = insertionSort(A)
+        begin = time.time()
 
-    end = time.time()
+        result = insertionSort(A)
 
-    time_taken = end - begin
+        end = time.time()
 
-    y_selectionSort[i] = time_taken
+        y_selectionSort[i] = end - begin
 
-plt.plot(x, y_insertionSort, label = 'Insertion Sort')
-plt.plot(x, y_selectionSort, label = 'Selection Sort')
-plt.xlabel('Array Size(n)')
-plt.ylabel('Time(sec)')
-plt.title('Insertion Sort Vs Selection Sort')
-plt.legend()
-plt.show()
+    plt.plot(x, y_insertionSort, label = 'Insertion Sort')
+    plt.plot(x, y_selectionSort, label = 'Selection Sort')
+    plt.xlabel('Array Size(n)')
+    plt.ylabel('Time(sec)')
+    plt.title('Insertion Sort Vs Selection Sort')
+    plt.legend()
+    plt.show()
+
+if __name__ == '__main__':
+    main()
 
 
 
