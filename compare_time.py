@@ -3,15 +3,53 @@ from selection_sort import selectionSort
 
 import numpy as np
 import time
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 
-A = np.random.rand(10000)
+A = np.random.rand(100)
 
-begin = time.time()
+x = [100 , 1000, 10000, 100000, 1000000]
+n = len(x)
 
-result = insertionSort(A)
+y_insertionSort = []
+y_selectionSort = []
 
-# result = selectionSort(A)
+for i in range(0, n):
 
-end = time.time()
+    begin = time.time()
 
-print("Time Taken: ", end-begin)
+    result = insertionSort(A)
+
+    end = time.time()
+
+    time_taken = end - begin
+
+    y_insertionSort[i] = time_taken
+
+for i in range(0, n):
+
+    begin = time.time()
+
+    result = insertionSort(A)
+
+    end = time.time()
+
+    time_taken = end - begin
+
+    y_selectionSort[i] = time_taken
+
+plt.plot(x, y_insertionSort, label = 'Insertion Sort')
+plt.plot(x, y_selectionSort, label = 'Selection Sort')
+plt.xlabel('Array Size(n)')
+plt.ylabel('Time(sec)')
+plt.title('Insertion Sort Vs Selection Sort')
+plt.legend()
+plt.show()
+
+
+
+
+
+
+
+
